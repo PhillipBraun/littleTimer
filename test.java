@@ -68,12 +68,24 @@ public class test extends JFrame {
   } // end of main
   
   public void jButton1_ActionPerformed(ActionEvent evt) 
+  {  
+    setText();
+  }
+  
+  public void setText()
   {
     Countdown countDown1;
-    countDown1 = new Countdown(jTextField1.getText()); 
+    countDown1 = new Countdown(jTextField1.getText());
+    for (int i = 0; i < 1000; i++) 
+    {
+      jLabel1.setText(countDown1.getCountdown());
+      try {
+        Thread.sleep(1000);                 //1000 milliseconds is one second.
+      } catch(InterruptedException ex) {
+        Thread.currentThread().interrupt();
+      }
+    } 
     
-    jLabel1.setText(countDown1.getCountdown());
-  } // end of jButton1_ActionPerformed
-  
+  } 
   // Ende Methoden
 } // end of class test
